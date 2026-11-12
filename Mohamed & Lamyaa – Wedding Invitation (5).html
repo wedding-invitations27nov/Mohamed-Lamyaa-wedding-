@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mohamed &amp; Lamyaa – Wedding Invitation</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Great+Vibes&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f5ea;--ink:#454620;--soft:#6d6e45;--blue:#a9d3dc;--rose:#ee7f7a;--gold:#f2c46d;--btn:#454620;--btnt:#f6f5ea;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d221b;--ink:#ece9cc;--soft:#b9b794;--btn:#ece9cc;--btnt:#1d221b;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1d221b;--ink:#ece9cc;--soft:#b9b794;--btn:#ece9cc;--btnt:#1d221b;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font-family:"Cormorant Garamond",Georgia,serif;text-align:center;display:flex;justify-content:center;overflow-x:hidden}
+.card{position:relative;width:100%;max-width:520px;padding:64px 26px 56px;overflow:hidden;opacity:0;transform:translateY(14px);transition:opacity 1.2s ease,transform 1.2s ease}
+.card.in{opacity:1;transform:none}
+.card::before,.card::after{content:"";position:absolute;border-radius:50%;filter:blur(34px);z-index:0}
+.card::before{width:260px;height:260px;background:var(--blue);top:-100px;left:-120px;opacity:.4}
+.card::after{width:220px;height:220px;background:var(--gold);bottom:-100px;right:-100px;opacity:.28}
+.card>*{position:relative;z-index:1}
+.corner{position:absolute!important;width:170px;height:170px;z-index:0!important;pointer-events:none}
+.tr{top:-6px;right:-6px}.bl{bottom:-6px;left:-6px;transform:rotate(180deg)}
+.kicker{font-size:1.2rem;letter-spacing:.22em;margin:0}
+h2{font-weight:400;font-size:1.65rem;letter-spacing:.14em;margin:6px 0 18px}
+.wreath{width:min(290px,78%);margin:0 auto;display:block;color:var(--ink)}
+.names{font-family:"Great Vibes","Brush Script MT",cursive;font-size:clamp(2.7rem,12.5vw,3.7rem);margin:10px 0 2px;line-height:1.15}
+.ar{font-family:"Amiri",serif;font-size:1.15rem;color:var(--soft);margin:0 0 14px}
+.rule{width:64px;height:1px;background:var(--soft);opacity:.6;margin:14px auto}
+.date{font-size:1.65rem;letter-spacing:.14em;margin:8px 0 2px}
+.time{font-size:1.3rem;letter-spacing:.2em;margin:0 0 4px;color:var(--soft)}
+.msg{font-size:1.2rem;line-height:1.55;margin:0 auto 18px;max-width:22em}
+.venue{font-weight:600;font-size:1.3rem;margin:0}
+.hall{font-size:1.15rem;color:var(--soft);margin:2px 0 0}
+.count{display:flex;justify-content:center;gap:10px;margin:28px 0 24px}
+.count div{min-width:66px;padding:10px 4px;border:1px solid color-mix(in srgb,var(--soft) 45%,transparent);border-radius:10px}
+.count b{display:block;font-size:1.9rem;font-weight:600;line-height:1}
+.count span{font-size:.85rem;color:var(--soft)}
+.btn{display:inline-block;background:var(--btn);color:var(--btnt);padding:13px 30px;border-radius:999px;border:0;cursor:pointer;font:inherit;font-size:1.1rem;letter-spacing:.06em}
+.btn.alt{background:none;color:var(--ink);border:1px solid var(--soft);padding:10px 22px;font-size:1rem;margin-top:12px}
+.btn:focus-visible,.mus:focus-visible{outline:3px solid var(--rose);outline-offset:3px}
+#addr{margin:14px auto 0;font-size:1.05rem;color:var(--soft);display:none}
+.splash{position:fixed;inset:0;z-index:20;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:24px;transition:opacity .9s ease,visibility .9s}
+.splash.out{opacity:0;visibility:hidden}
+.splash .names{font-size:2.8rem}
+.splash p{margin:0 0 14px;letter-spacing:.2em;color:var(--soft)}
+.mus{position:fixed;right:16px;top:calc(env(safe-area-inset-top,0px) + 14px);z-index:30;width:44px;height:44px;border-radius:50%;border:0;background:var(--btn);color:var(--btnt);font-size:1.3rem;cursor:pointer;display:none}
+.mus.show{display:block}.mus.off{opacity:.55}
+@media (prefers-reduced-motion:reduce){.card,.splash{transition:none}}
+</style>
+</head>
+<body>
+<audio id="sil" loop playsinline src="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA="></audio>
+<div class="splash" id="splash">
+<svg class="wreath" viewBox="0 0 300 300" style="width:min(230px,62%)" aria-hidden="true"><g class="wg"></g><text x="150" y="172" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="96" fill="currentColor">ML</text></svg>
+<p class="names">Mohamed &amp; Lamyaa</p>
+<p>WEDDING INVITATION</p>
+<button class="btn" id="open">Open invitation</button>
+</div>
+<button class="mus" id="mus" aria-label="Pause music">&#9834;</button>
+<main class="card" id="card">
+<svg class="corner tr" viewBox="0 0 170 170" aria-hidden="true"><g class="cg"></g></svg>
+<svg class="corner bl" viewBox="0 0 170 170" aria-hidden="true"><g class="cg"></g></svg>
+<p class="kicker">SAVE THE DATE</p>
+<h2>THE WEDDING OF</h2>
+<svg class="wreath" viewBox="0 0 300 300" role="img" aria-label="ML monogram in floral wreath"><g class="wg"></g><text x="150" y="172" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="96" fill="currentColor">ML</text></svg>
+<p class="names">Mohamed &amp; Lamyaa</p>
+<p class="ar" dir="rtl">ندعوكم لحضور حفل زفافنا</p>
+<div class="rule"></div>
+<p class="date">27 NOVEMBER 2026</p>
+<p class="time">AT 7:00 PM</p>
+<div class="rule"></div>
+<p class="msg">We are delighted to invite you to join us in celebrating our wedding.</p>
+<p class="venue">Rehanna Plaza Hotel, Nasr City</p>
+<p class="hall">VIP Hall</p>
+<div class="count" id="count" aria-live="off"></div>
+<button class="btn" id="map">Open location in Maps</button><br>
+<button class="btn alt" id="cp">Copy address</button>
+<p id="addr">Rehanna Plaza Hotel, Nasr City, Cairo</p>
+</main>
+<script>
+(function(){
+var NS='http://www.w3.org/2000/svg',cols=['#a9d3dc','#ee7f7a','#f2c46d','#7fa7c9'];
+function el(g,n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);g.appendChild(e);return e;}
+document.querySelectorAll('.wg').forEach(function(g){
+for(var i=0;i<24;i++){var t=i/24*Math.PI*2,x=150+112*Math.cos(t),y=150+112*Math.sin(t);
+el(g,'ellipse',{cx:x,cy:y,rx:15,ry:7,fill:'#a9d3dc',opacity:.75,transform:'rotate('+(t*180/Math.PI+90)+' '+x+' '+y+')'});}
+el(g,'circle',{cx:150,cy:150,r:112,fill:'none',stroke:'#6d6e45',opacity:.6,'stroke-width':1.5});
+for(var j=0;j<6;j++){var a=j/6*Math.PI*2+.5,fx=150+112*Math.cos(a),fy=150+112*Math.sin(a);
+el(g,'circle',{cx:fx,cy:fy,r:15,fill:cols[(j+1)%4]});el(g,'circle',{cx:fx+9,cy:fy-8,r:9,fill:cols[(j+2)%4]});el(g,'circle',{cx:fx,cy:fy,r:5,fill:'#fff',opacity:.5});}});
+document.querySelectorAll('.cg').forEach(function(g){
+el(g,'path',{d:'M170 0 C140 40 90 70 20 110',fill:'none',stroke:'#6d6e45','stroke-width':1.5,opacity:.6});
+for(var i=0;i<7;i++){var p=i/7,x=160-p*135,y=8+p*100;
+el(g,'ellipse',{cx:x-10,cy:y+8,rx:14,ry:5,fill:'#6d6e45',opacity:.45,transform:'rotate('+(35+i*4)+' '+(x-10)+' '+(y+8)+')'});
+el(g,'ellipse',{cx:x+6,cy:y-6,rx:12,ry:4.5,fill:'#a9d3dc',opacity:.8,transform:'rotate('+(-30-i*4)+' '+(x+6)+' '+(y-6)+')'});}
+[[120,40,12,0],[75,72,10,1],[145,18,9,2]].forEach(function(f){el(g,'circle',{cx:f[0],cy:f[1],r:f[2],fill:cols[f[3]]});el(g,'circle',{cx:f[0],cy:f[1],r:3,fill:'#fff',opacity:.5});});});
+
+var c=document.getElementById('count'),target=new Date('2026-11-27T19:00:00+02:00').getTime();
+function tick(){var d=target-Date.now();if(d<=0){c.textContent='Today is the day';return;}
+var D=Math.floor(d/864e5),H=Math.floor(d%864e5/36e5),M=Math.floor(d%36e5/6e4),S=Math.floor(d%6e4/1e3);
+c.innerHTML=[['Days',D],['Hours',H],['Min',M],['Sec',S]].map(function(p){return '<div><b>'+p[1]+'</b><span>'+p[0]+'</span></div>';}).join('');}
+tick();setInterval(tick,1000);
+
+var addr=document.getElementById('addr'),cp=document.getElementById('cp');
+document.getElementById('map').addEventListener('click',function(){
+var w=null;try{w=window.open('https://maps.google.com/?q=Rehanna+Plaza+Hotel+Nasr+City','_blank');}catch(e){}
+if(!w)addr.style.display='block';});
+cp.addEventListener('click',function(){addr.style.display='block';
+try{navigator.clipboard.writeText(addr.textContent).then(function(){cp.textContent='Copied';});}catch(e){}});
+
+var btn=document.getElementById('mus'),ctx,master,timer,nextT=0,playing=false,step=0;
+var chords=[[261.63,329.63,392,523.25],[196,246.94,293.66,392],[220,261.63,329.63,440],[174.61,220,261.63,349.23]],bass=[130.81,98,110,87.31];
+function note(f,t,d,v,type){var o=ctx.createOscillator(),g=ctx.createGain();o.type=type||'sine';o.frequency.value=f;
+g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+.02);g.gain.exponentialRampToValueAtTime(.0008,t+d);
+o.connect(g);g.connect(master);o.start(t);o.stop(t+d+.05);}
+function bar(t){var ch=chords[step%4];note(bass[step%4],t,3.4,.1,'triangle');
+[0,1,2,3,2,1,3,2].forEach(function(i,k){note(ch[i],t+k*.5,1.8,.07,'sine');note(ch[i]*2,t+k*.5,.9,.015,'sine');});step++;}
+function sched(){while(nextT<ctx.currentTime+6){bar(nextT);nextT+=4;}}
+function startAudio(){try{try{navigator.audioSession.type='playback';}catch(e){}
+var sa=document.getElementById('sil');if(sa){var pr=sa.play();if(pr&&pr.catch)pr.catch(function(){});}
+if(!ctx){var AC=window.AudioContext||window.webkitAudioContext;ctx=new AC();master=ctx.createGain();master.gain.value=.85;
+var dl=ctx.createDelay(1),fb=ctx.createGain();dl.delayTime.value=.33;fb.gain.value=.35;
+master.connect(ctx.destination);master.connect(dl);dl.connect(fb);fb.connect(dl);dl.connect(ctx.destination);}
+var b=ctx.createBuffer(1,1,22050),s=ctx.createBufferSource();s.buffer=b;s.connect(ctx.destination);s.start(0);
+ctx.resume();nextT=ctx.currentTime+.15;if(!playing){playing=true;sched();timer=setInterval(sched,1000);}
+btn.classList.remove('off');btn.setAttribute('aria-label','Pause music');}catch(e){}}
+function stopAudio(){playing=false;clearInterval(timer);if(ctx)ctx.suspend();btn.classList.add('off');btn.setAttribute('aria-label','Play music');}
+btn.addEventListener('click',function(){if(playing)stopAudio();else startAudio();});
+document.getElementById('open').addEventListener('click',function(){
+startAudio();btn.classList.add('show');
+document.getElementById('splash').classList.add('out');
+document.getElementById('card').classList.add('in');window.scrollTo(0,0);});
+})();
+</script>
+</body>
+</html>
